@@ -9,13 +9,24 @@ const FireworkSoundManager = () => {
     
     // Clone audio for overlapping sounds
     const sound = audioRef.current.cloneNode() as HTMLAudioElement;
-    sound.volume = 0.1 + Math.random() * 0.05; // Much lower volume
+    sound.volume = 0.15 + Math.random() * 0.05;
     sound.playbackRate = 0.9 + Math.random() * 0.2;
     sound.play().catch(() => {});
     
     // Clean up after playing
     sound.onended = () => sound.remove();
   }, []);
+
+  const playFireworkBurst = useCallback(() => {
+    // Play 2-3 fireworks with 5 second gaps
+    const fireworkCount = 2 + Math.floor(Math.random() * 2); // 2 or 3 fireworks
+    
+    for (let i = 0; i < fireworkCount; i++) {
+      setTimeout(() => {
+        playFireworkSound();
+      }, i * 5000); // 5 second gap between each
+    }
+  }, [playFireworkSound]);
 
   useEffect(() => {
     // Preload audio
@@ -39,28 +50,21 @@ const FireworkSoundManager = () => {
   }, []);
 
   useEffect(() => {
-    const timeouts: NodeJS.Timeout[] = [];
-    const intervals: NodeJS.Timeout[] = [];
-    
-    // Only 4 fireworks have sound - synced with aerial fireworks
-    const aerialTimes = [500, 1800, 3500, 5200];
-    aerialTimes.forEach((delay) => {
-      // Initial sound
-      const t = setTimeout(() => playFireworkSound(), delay + 700);
-      timeouts.push(t);
-      
-      // Recurring sound every 8 seconds
-      const interval = setInterval(() => {
-        playFireworkSound();
-      }, 8000);
-      intervals.push(interval);
-    });
+    // Initial burst after a short delay
+    const initialTimeout = setTimeout(() => {
+      playFireworkBurst();
+    }, 1000);
+
+    // Loop: play burst every 30 seconds
+    const loopInterval = setInterval(() => {
+      playFireworkBurst();
+    }, 30000);
 
     return () => {
-      timeouts.forEach(clearTimeout);
-      intervals.forEach(clearInterval);
+      clearTimeout(initialTimeout);
+      clearInterval(loopInterval);
     };
-  }, [playFireworkSound]);
+  }, [playFireworkBurst]);
 
   return null;
 };
