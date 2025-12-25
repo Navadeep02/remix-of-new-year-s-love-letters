@@ -39,7 +39,8 @@ export const useShareableLink = () => {
     if (!encoded) return DEFAULT_DATA;
 
     try {
-      const decoded = atob(encoded);
+      // Decode with decodeURIComponent to handle Unicode characters
+      const decoded = decodeURIComponent(atob(encoded));
       const parsed = JSON.parse(decoded);
       return {
         ...DEFAULT_DATA,
@@ -52,7 +53,9 @@ export const useShareableLink = () => {
 
   const generateLink = useCallback((data: Partial<MessageData>): string => {
     const mergedData = { ...DEFAULT_DATA, ...data };
-    const encoded = btoa(JSON.stringify(mergedData));
+    // Use encodeURIComponent to handle Unicode characters before btoa
+    const jsonStr = JSON.stringify(mergedData);
+    const encoded = btoa(encodeURIComponent(jsonStr));
     const baseUrl = window.location.origin + window.location.pathname;
     return `${baseUrl}?m=${encoded}`;
   }, []);
