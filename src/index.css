@@ -1,0 +1,499 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Performance-optimized CSS animations */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUpSway {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(-30vh) translateX(20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-60vh) translateX(-15px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-90vh) translateX(25px) rotate(3deg);
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-130vh) translateX(10px) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(2);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(2.2);
+  }
+}
+
+@keyframes flamePulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rocketLaunch {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(-1 * var(--target-y)));
+    opacity: 1;
+  }
+}
+
+@keyframes trailFlicker {
+  0%, 100% {
+    opacity: 1;
+    height: 40px;
+  }
+  50% {
+    opacity: 0.7;
+    height: 50px;
+  }
+}
+
+@keyframes flashBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes particleBurst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+      calc(cos(var(--angle)) * var(--speed) * 80px),
+      calc(sin(var(--angle)) * var(--speed) * 80px + 60px)
+    );
+    opacity: 0;
+    scale: 0.3;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 45 100% 96%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 45 100% 96%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 45 100% 96%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 0 65% 65%;
+    --secondary-foreground: 45 100% 96%;
+
+    --muted: 222 30% 25%;
+    --muted-foreground: 45 30% 70%;
+
+    --accent: 45 100% 70%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 25%;
+    --input: 222 30% 25%;
+    --ring: 38 92% 50%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --glow-gold: 38 92% 50%;
+    --glow-red: 0 65% 55%;
+    --night-deep: 222 60% 8%;
+    --night-mid: 222 47% 15%;
+    --lantern-orange: 25 95% 55%;
+    --lantern-red: 0 70% 50%;
+    --lantern-rim: 25 38% 22%;
+    --star-yellow: 45 100% 85%;
+    --text-warm: 45 100% 96%;
+
+    /* Firework accents */
+    --firework-cyan: 190 95% 55%;
+    --firework-green: 138 78% 52%;
+    --firework-purple: 285 88% 65%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 45 100% 96%;
+    --card: 222 47% 15%;
+    --card-foreground: 45 100% 96%;
+    --popover: 222 47% 15%;
+    --popover-foreground: 45 100% 96%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 0 65% 65%;
+    --secondary-foreground: 45 100% 96%;
+    --muted: 222 30% 25%;
+    --muted-foreground: 45 30% 70%;
+    --accent: 45 100% 70%;
+    --accent-foreground: 222 47% 11%;
+    --border: 222 30% 25%;
+    --input: 222 30% 25%;
+    --ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .font-handwritten {
+    font-family: 'Caveat', cursive;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--glow-gold) / 0.5),
+                 0 0 40px hsl(var(--glow-gold) / 0.3),
+                 0 0 60px hsl(var(--glow-gold) / 0.2);
+  }
+
+  .text-glow-soft {
+    text-shadow: 0 0 10px hsl(var(--glow-gold) / 0.4),
+                 0 0 20px hsl(var(--glow-gold) / 0.2);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 30px hsl(var(--glow-gold) / 0.3),
+                0 0 60px hsl(var(--glow-gold) / 0.15),
+                inset 0 0 30px hsl(var(--glow-gold) / 0.05);
+  }
+
+  .box-glow-red {
+    box-shadow: 0 0 30px hsl(var(--glow-red) / 0.3),
+                0 0 60px hsl(var(--glow-red) / 0.15),
+                inset 0 0 30px hsl(var(--glow-red) / 0.05);
+  }
+
+  .gradient-night {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--night-deep)) 0%,
+      hsl(var(--background)) 50%,
+      hsl(var(--night-mid)) 100%
+    );
+  }
+
+  .gradient-card {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.9) 0%,
+      hsl(var(--night-mid) / 0.95) 100%
+    );
+  }
+
+  .gradient-card-warm {
+    background: linear-gradient(
+      135deg,
+      hsl(25 40% 18% / 0.95) 0%,
+      hsl(var(--card) / 0.9) 100%
+    );
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(3deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 10px hsl(var(--glow-gold) / 0.5));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 20px hsl(var(--glow-gold) / 0.8));
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Firework burst animation */
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Crackle spark animation */
+@keyframes crackle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--end-x), var(--end-y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Falling trail animation */
+@keyframes trail {
+  0% {
+    transform: translate(var(--start-x), var(--start-y));
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--start-x), var(--end-y));
+    opacity: 0;
+  }
+}
+
+/* Central flash animation */
+@keyframes flash {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes envelope-open {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: rise 15s linear infinite;
+}
+
+.animate-firework {
+  animation: firework 1.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--night-deep));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
