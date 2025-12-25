@@ -11,19 +11,28 @@ import AerialFirework from '@/components/AerialFirework';
 import HeartFirework from '@/components/HeartFirework';
 import FireworkSoundManager from '@/components/FireworkSoundManager';
 import SnowFall from '@/components/SnowFall';
-import ShareLinkGenerator from '@/components/ShareLinkGenerator';
-import { useShareableLink } from '@/hooks/useShareableLink';
 
 const Index = () => {
-  const { messageData } = useShareableLink();
+  const apologyContent = [
+    "My dearest friend,",
+    "I know words cannot undo the past, but I hope they can help heal the present. I'm truly sorry for the times I wasn't there when you needed me, for the moments I let you down, and for any pain I may have caused.",
+    "You mean the world to me, and the thought of hurting you weighs heavy on my heart. Please know that every mistake I made taught me how precious our friendship truly is.",
+    "I promise to be better, to listen more, to be present, and to cherish every moment we share together.",
+    "Can you find it in your heart to forgive me?"
+  ];
+
+  const wishesContent = [
+    "My wonderful friend,",
+    "As we step into this new year together, my heart is filled with so much gratitude and hope. Having you in my life has been one of my greatest blessings.",
+    "May this year bring you endless joy, beautiful surprises, and all the happiness your heart can hold. May your dreams take flight, your worries fade away, and your days be filled with laughter and love.",
+    "Here's to new adventures, deeper connections, and memories that will last a lifetime. Thank you for being you – for your kindness, your patience, and your beautiful soul.",
+    "Let's make this year our best one yet!"
+  ];
 
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       {/* Sound Manager */}
       <FireworkSoundManager />
-      
-      {/* Share Link Generator */}
-      <ShareLinkGenerator />
       
       {/* Background elements */}
       <StarryBackground />
@@ -68,7 +77,7 @@ const Index = () => {
               A Special New Year
             </h1>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-handwritten text-accent text-glow-soft mb-8">
-              Message for {messageData.recipientName}
+              Message for You
             </h2>
 
             <motion.p
@@ -124,20 +133,20 @@ const Index = () => {
 
             {/* Apology Letter */}
             <LetterCard
-              title={messageData.apologyTitle}
+              title="I'm Sorry"
               subtitle="A letter from my heart"
-              content={messageData.apologyContent}
-              signature={`With all my love and regret, ${messageData.senderName} ❤️`}
+              content={apologyContent}
+              signature="With all my love and regret ❤️"
               variant="apology"
               icon={<Heart className="w-6 h-6" />}
             />
 
             {/* Wishes Letter */}
             <LetterCard
-              title={messageData.wishesTitle}
+              title="Happy New Year"
               subtitle="Wishes for our beautiful journey ahead"
-              content={messageData.wishesContent}
-              signature={`Forever your friend, ${messageData.senderName} ✨`}
+              content={wishesContent}
+              signature="Forever your friend ✨"
               variant="wishes"
               icon={<Sparkles className="w-6 h-6" />}
             />
