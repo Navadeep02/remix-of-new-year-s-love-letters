@@ -18,13 +18,13 @@ const FireworkSoundManager = () => {
   }, []);
 
   const playFireworkBurst = useCallback(() => {
-    // Play 2-3 fireworks with 5 second gaps
+    // Play 2-3 fireworks with 30 second gaps
     const fireworkCount = 2 + Math.floor(Math.random() * 2); // 2 or 3 fireworks
     
     for (let i = 0; i < fireworkCount; i++) {
       setTimeout(() => {
         playFireworkSound();
-      }, i * 5000); // 5 second gap between each
+      }, i * 30000); // 30 second gap between each
     }
   }, [playFireworkSound]);
 
