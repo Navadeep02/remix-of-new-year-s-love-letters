@@ -76,9 +76,12 @@ const Index = () => {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-handwritten text-primary text-glow mb-6">
               A Special New Year
             </h1>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-handwritten text-accent text-glow-soft mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-handwritten text-accent text-glow-soft mb-4">
               Message for You
             </h2>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-handwritten text-secondary text-glow-soft mb-8">
+              Dear Rupa ❤️
+            </h3>
 
             <motion.p
               initial={{ opacity: 0 }}
@@ -86,7 +89,7 @@ const Index = () => {
               transition={{ delay: 0.5, duration: 1 }}
               className="text-lg sm:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed"
             >
-              In the warmth of friendship and the magic of a new beginning,
+              In the warmth of friendship and my love for u and the magic of a new beginning in your life,
               <br />
               I've written these words from my heart to yours.
             </motion.p>
@@ -170,10 +173,10 @@ const Index = () => {
             </div>
 
             <p className="text-2xl sm:text-3xl font-handwritten text-foreground/90 leading-relaxed mb-8">
-              "Thank you for being part of my life.
+              "Thanku for being part of my life.
               <br />
               <span className="text-primary text-glow-soft">
-                Let's make the new year beautiful together.
+                May 2026 bring you happiness and success in everything you do.
               </span>"
             </p>
 
@@ -197,7 +200,7 @@ const Index = () => {
               className="mt-12"
             >
               <span className="text-6xl sm:text-8xl font-bold font-handwritten text-primary text-glow">
-                2025
+                2026
               </span>
             </motion.div>
           </motion.div>
