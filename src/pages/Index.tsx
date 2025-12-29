@@ -14,7 +14,7 @@ import SnowFall from '@/components/SnowFall';
 
 const Index = () => {
   const apologyContent = [
-    "My dearest friend,",
+    "My dear Rupa❤️‍🩹😊,",
     "I know words cannot undo the past, but I hope they can help heal the present. I'm truly sorry for the times I wasn't there when you needed me, for the moments I let you down, and for any pain I may have caused.",
     "You mean the world to me, and the thought of hurting you weighs heavy on my heart. Please know that every mistake I made taught me how precious our friendship truly is.",
     "I promise to be better, to listen more, to be present, and to cherish every moment we share together.",
