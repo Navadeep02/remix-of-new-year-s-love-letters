@@ -15,10 +15,16 @@ import SnowFall from '@/components/SnowFall';
 const Index = () => {
   const apologyContent = [
     "My dear Rupa❤️‍🩹😊,",
-    "I know words cannot undo the past, but I hope they can help heal the present. I'm truly sorry for the times I wasn't there when you needed me, for the moments I let you down, and for any pain I may have caused.",
-    "You mean the world to me, and the thought of hurting you weighs heavy on my heart. Please know that every mistake I made taught me how precious our friendship truly is.",
-    "I promise to be better, to listen more, to be present, and to cherish every moment we share together.",
-    "Can you find it in your heart to forgive me?"
+    "I know words cannot undo the past, but I hope they can help heal the present. I'm truly sorry for the moments I let you down, and for any pain I may have caused.",
+    "You mean the world to me, and the thought of hurting you weighs heavy on my heart. Please know that every mistake I made taught me how precious u are truly.", 
+    "Nv block chesthav ani mundhe telusu,ala behave chesthe block chesthav ane ala behave chesa and I thought if i become that kind of person u would hate and it makes easy for u to forget about me and be happy and i am sorry nenu mundhe anukuna ala behave chesthe block chesthav ani atleast I won in this😁"
+    "But nv enduku antha kopam ga unavo naku telidhu but thats okay i deserved it neku sorry chepthe nachadhu ani telusu but I cant control myself cause naku na behaviour nachatledhu sarle inka elago end ayipoindhi I am happy"
+    "Freedom gurinchi okay ni opinion neku undhi but i know how harsh it is ouside of our comfort zone or the fake people,u are one of the strongest person I had ever met so I have assurance about u that u will succed in life and dont fight for anything live through everything happiness and bad days it is part of life and don't think it is as a fight it is ur pife u dont need to fight for anything if u think it as a fight u will tired of it take it as a way of how u should live with ur own choices to be happy i know na opinion ki values ledhu ani bit that's okay I said what i wanted to say"
+    "Naku self-respect ledhu ani anukuntunav anni sarlu sorry chepthunanduku nadhi mistake anipisthe nenu sorry cheptha and nv em anukunte adhi anukuno nenu evari kosam na character marchukonu"
+    "Thanku for being a wonderful friend for me,I am really thankful and appreciate ur support☺️ and friendship visyam lo naku friends leru ante I meant u are enough ani,naku evari sympathy avasaram ledhu nenu eppudu na space lo unta,I really dont need anyone but u are an exception ippudu nv kuda avasaram ledhu,the way u talked killed everything inside me and okay ni kopam ki reason undhi and i understand that nad lastly neku elogolaga use ayanu I am happy for that naku ayina antha varaku help chesa but I tried my best"
+    "Nenu spoil chesanu ante nenu em cheyali nv kuda nannu friend ani anukovali ga parathi sari nene anni initiate chesthe okasari na side nunchi alochinchi chudu appudu nike ardhamavuthundhi enduku overthink chesano ani,i started to overthink and naku telusu niku chala mandhi friends unnaru ani nenu important kadhu ani but if need me anytime just unblock chesi oka message cheyu I will be there within seconds for you, remember I will always care for u and be there for u I promised that❤️‍🩹"
+    "I hope u will forgive me for my behaviour and u will never see me like that,chepadaniki chala undhi but anyhow I dont care annav inka chalu le new year wish vere letter lo rasa chudu okavela motham chaduvuthe website ela undho chepu a crackers sound adhi work avuthundhi ledho kuda telidhu okasari chepu"
+  
   ];
 
   const wishesContent = [
