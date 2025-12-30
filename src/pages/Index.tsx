@@ -27,11 +27,15 @@ const Index = () => {
   ];
 
   const wishesContent = [
-    "My wonderful friend,",
+    "My Dear Rupa or sreeee❤️✨,",
+    "Rupa,the best person I had ever met,my number one priority,the person I care most,I wish u a Happy Happy Happy new year ra Rupa❤️,e year jarigindhi anni marchipo whatever it is or who ever it is inka focus on yourself and make ur life happy and the way u wanted,I fucking belive in u I know u can achieve everything,i pray for your sucess and belive me I really want to see u successful and achieve everything u wanted and explore the place u wanted and be super duper fucking happy ",
+    "Make ur parents proud and prove urself and show everyone what u are really and the person who is super storng and can achive everything and in your terms fight for everything you wanted learn from the experiences and improve urself and enjoy the process ra rupa it will be super easy to do if enjoy the success or hardships and take it as a motivation and prove urself for anyone who doubted on you or left u and dont worry about the persons who left u,u are fucking special u carry a chram around and u jave the greatest smile and nv chala baguntav a smile tho dont ever lose it ",
+    "I really belive in u ra rupa a bank exams clear chesi I want to see u in a better position abd be super happy and confident, independent women,it hurts to remember that i wont be there in this process or see ur success or there for u in ur hardships but oka message rupa I would do anything for ur sucess ni kanna naku ni medha namakam ekkuva anduke I always try push u for ur success✨",
+    "I hope from now year every year u will celebrate happily and forget everything u faced and learned from them and use these experiences to become a better person,inka entha chepina nv elago patinchukovu but okay malli chepthuna I will always care for u,be there for u and one last time I love you Rupa❤️❤️❤️❤️❤️,I am super happy that i met u and loved u unconditionally and made sure u never felt alone,u can hate me or whatever misunderstand chesukunapudu nenu em cheyali parthisari so no regrets",
     "As we step into this new year together, my heart is filled with so much gratitude and hope. Having you in my life has been one of my greatest blessings.",
     "May this year bring you endless joy, beautiful surprises, and all the happiness your heart can hold. May your dreams take flight, your worries fade away, and your days be filled with laughter and love.",
     "Here's to new adventures, deeper connections, and memories that will last a lifetime. Thank you for being you – for your kindness, your patience, and your beautiful soul.",
-    "Let's make this year our best one yet!"
+    "Motham chadivuthav ane anukuntuna chala efforts peti chesa e website to make u happy,inka chala chepali ani undhi kani odhule inka bye byeeeee rupa👋🏻👋🏻🙏🏻🙏🏻🙏🏻🙏🏻,It hurts to say goodbye or getting blocked and antilo nve first block kuda u are first person who will ever block me🤣😭🤣,inka anthe love u and happy year🎊✨"
   ];
 
   return (
