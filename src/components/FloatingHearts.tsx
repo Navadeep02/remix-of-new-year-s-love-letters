@@ -4,18 +4,17 @@ import { Heart } from 'lucide-react';
 const FloatingHearts = () => {
   const hearts = useMemo(() => {
     const items = [];
-    const count = 10; // Reduced from 20
+    const count = 5; // Reduced for performance
     
     for (let i = 0; i < count; i++) {
       items.push({
         id: i,
         startX: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
         startY: (typeof window !== 'undefined' ? window.innerHeight : 800) + 30 + Math.random() * 200,
-        size: 18 + Math.random() * 16,
-        duration: 7 + Math.random() * 5,
-        delay: i * 0.5,
-        opacity: 0.6 + Math.random() * 0.4,
-        glowIntensity: 0.5 + Math.random() * 0.5,
+        size: 20 + Math.random() * 12,
+        duration: 10 + Math.random() * 5,
+        delay: i * 1.5,
+        opacity: 0.7,
       });
     }
     return items;
@@ -40,7 +39,7 @@ const FloatingHearts = () => {
             style={{
               opacity: heart.opacity,
               color: '#FF6B6B',
-              filter: `drop-shadow(0 0 ${8 * heart.glowIntensity}px rgba(255,100,100,0.8)) drop-shadow(0 0 ${16 * heart.glowIntensity}px rgba(255,50,50,0.6)) drop-shadow(0 0 ${24 * heart.glowIntensity}px rgba(255,0,0,0.4))`,
+              filter: 'drop-shadow(0 0 6px rgba(255,100,100,0.6))',
             }}
           />
         </div>
