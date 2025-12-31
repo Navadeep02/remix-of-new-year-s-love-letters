@@ -29,13 +29,13 @@ const FireworkSoundManager = () => {
   }, [isUnlocked]);
 
   const playFireworkBurst = useCallback(() => {
-    // Play 2-3 fireworks with 30 second gaps
+    // Play 2-3 fireworks with 15 second gaps
     const fireworkCount = 2 + Math.floor(Math.random() * 2);
     
     for (let i = 0; i < fireworkCount; i++) {
       const timeout = window.setTimeout(() => {
         playFireworkSound();
-      }, i * 30000);
+      }, i * 15000);
       timeoutsRef.current.push(timeout);
     }
   }, [playFireworkSound]);
@@ -100,10 +100,10 @@ const FireworkSoundManager = () => {
     }, 500);
     timeoutsRef.current.push(initialTimeout);
 
-    // Loop: play burst every 30 seconds
+    // Loop: play burst every 15 seconds
     const loopInterval = window.setInterval(() => {
       playFireworkBurst();
-    }, 30000);
+    }, 15000);
 
     return () => {
       timeoutsRef.current.forEach(t => clearTimeout(t));
