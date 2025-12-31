@@ -1,70 +1,116 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 
 const FireworkSoundManager = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const isInitializedRef = useRef(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const timeoutsRef = useRef<number[]>([]);
 
   const playFireworkSound = useCallback(() => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || !isUnlocked) return;
     
-    // Clone audio for overlapping sounds
-    const sound = audioRef.current.cloneNode() as HTMLAudioElement;
-    sound.volume = 0.15 + Math.random() * 0.05;
-    sound.playbackRate = 0.9 + Math.random() * 0.2;
-    sound.play().catch(() => {});
-    
-    // Clean up after playing
-    sound.onended = () => sound.remove();
-  }, []);
+    try {
+      // Clone audio for overlapping sounds
+      const sound = audioRef.current.cloneNode() as HTMLAudioElement;
+      sound.volume = 0.15 + Math.random() * 0.05;
+      sound.playbackRate = 0.9 + Math.random() * 0.2;
+      
+      const playPromise = sound.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log('Audio play failed:', err);
+        });
+      }
+      
+      // Clean up after playing
+      sound.onended = () => sound.remove();
+    } catch (err) {
+      console.log('Audio error:', err);
+    }
+  }, [isUnlocked]);
 
   const playFireworkBurst = useCallback(() => {
     // Play 2-3 fireworks with 30 second gaps
-    const fireworkCount = 2 + Math.floor(Math.random() * 2); // 2 or 3 fireworks
+    const fireworkCount = 2 + Math.floor(Math.random() * 2);
     
     for (let i = 0; i < fireworkCount; i++) {
-      setTimeout(() => {
+      const timeout = window.setTimeout(() => {
         playFireworkSound();
-      }, i * 30000); // 30 second gap between each
+      }, i * 30000);
+      timeoutsRef.current.push(timeout);
     }
   }, [playFireworkSound]);
 
+  // Unlock audio on first user interaction
   useEffect(() => {
-    // Preload audio
-    audioRef.current = new Audio('/sounds/fireworks.mp3');
-    audioRef.current.preload = 'auto';
-    
-    const handleInteraction = () => {
-      if (!isInitializedRef.current) {
-        audioRef.current?.load();
-        isInitializedRef.current = true;
+    const unlockAudio = async () => {
+      if (isUnlocked) return;
+      
+      // Create and load audio element
+      if (!audioRef.current) {
+        audioRef.current = new Audio('/sounds/fireworks.mp3');
+        audioRef.current.preload = 'auto';
+      }
+      
+      try {
+        // Try to play a silent version to unlock
+        audioRef.current.volume = 0;
+        await audioRef.current.play();
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current.volume = 0.15;
+        
+        setIsUnlocked(true);
+        
+        // Remove listeners after unlock
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('touchstart', unlockAudio);
+        window.removeEventListener('touchend', unlockAudio);
+        window.removeEventListener('keydown', unlockAudio);
+      } catch (err) {
+        console.log('Audio unlock failed, will retry on next interaction');
       }
     };
 
-    window.addEventListener('click', handleInteraction);
-    window.addEventListener('touchstart', handleInteraction);
+    // Preload audio
+    audioRef.current = new Audio('/sounds/fireworks.mp3');
+    audioRef.current.preload = 'auto';
+    audioRef.current.load();
+
+    // Listen for various user interactions
+    window.addEventListener('click', unlockAudio);
+    window.addEventListener('touchstart', unlockAudio);
+    window.addEventListener('touchend', unlockAudio);
+    window.addEventListener('keydown', unlockAudio);
 
     return () => {
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('click', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+      window.removeEventListener('touchend', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
     };
-  }, []);
+  }, [isUnlocked]);
 
+  // Start playing sounds once unlocked
   useEffect(() => {
-    // Initial burst after a short delay
-    const initialTimeout = setTimeout(() => {
+    if (!isUnlocked) return;
+
+    // Initial burst after unlock
+    const initialTimeout = window.setTimeout(() => {
       playFireworkBurst();
-    }, 1000);
+    }, 500);
+    timeoutsRef.current.push(initialTimeout);
 
     // Loop: play burst every 30 seconds
-    const loopInterval = setInterval(() => {
+    const loopInterval = window.setInterval(() => {
       playFireworkBurst();
     }, 30000);
 
     return () => {
-      clearTimeout(initialTimeout);
+      timeoutsRef.current.forEach(t => clearTimeout(t));
+      timeoutsRef.current = [];
       clearInterval(loopInterval);
     };
-  }, [playFireworkBurst]);
+  }, [isUnlocked, playFireworkBurst]);
 
   return null;
 };
