@@ -31,7 +31,7 @@ const FireworkSoundManager = () => {
     for (let i = 0; i < fireworkCount; i++) {
       const timeout = window.setTimeout(() => {
         playFireworkSound();
-      }, i * 15000);
+      }, i * 10000);
       timeoutsRef.current.push(timeout);
     }
   }, [playFireworkSound]);
