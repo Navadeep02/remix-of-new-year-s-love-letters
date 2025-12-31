@@ -113,7 +113,7 @@ const FloatingFlowers = () => {
   const flowers = useMemo(() => {
     const items: Array<FlowerProps & { id: number }> = [];
     const types: FlowerProps['type'][] = ['sunflower', 'rose', 'tulip', 'daisy'];
-    const count = 6; // Reduced from 12
+    const count = 4; // Reduced for performance
     
     for (let i = 0; i < count; i++) {
       items.push({
@@ -121,9 +121,9 @@ const FloatingFlowers = () => {
         type: types[i % types.length],
         startX: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
         startY: (typeof window !== 'undefined' ? window.innerHeight : 800) + 50 + Math.random() * 300,
-        size: 30 + Math.random() * 20,
-        duration: 10 + Math.random() * 8,
-        delay: i * 1,
+        size: 28 + Math.random() * 15,
+        duration: 14 + Math.random() * 6,
+        delay: i * 2,
       });
     }
     return items;

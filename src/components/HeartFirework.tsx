@@ -16,16 +16,16 @@ const HeartFirework = ({ startX, delay = 0, color = '#FF69B4' }: HeartFireworkPr
   const heartParticles = useMemo(() => {
     const particles: { x: number; y: number; size: number }[] = [];
     
-    // Heart parametric equation
-    for (let t = 0; t < Math.PI * 2; t += 0.25) {
-      const scale = 8;
+    // Heart parametric equation - fewer points
+    for (let t = 0; t < Math.PI * 2; t += 0.5) {
+      const scale = 6;
       const x = scale * 16 * Math.pow(Math.sin(t), 3);
       const y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
       
       particles.push({
         x,
         y,
-        size: 4 + Math.random() * 2,
+        size: 4,
       });
     }
     
@@ -67,7 +67,7 @@ const HeartFirework = ({ startX, delay = 0, color = '#FF69B4' }: HeartFireworkPr
     
     const interval = setInterval(() => {
       launchFirework();
-    }, 8000 + Math.random() * 3000);
+    }, 12000 + Math.random() * 4000);
     
     return () => {
       clearInterval(interval);

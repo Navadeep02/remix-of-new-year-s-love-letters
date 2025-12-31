@@ -46,9 +46,9 @@ const FireworksDisplay = () => {
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
       angle: (Math.PI * 2 * i) / count,
-      speed: 3 + Math.random() * 2,
-      color: i % 4 === 0 ? '#FFFFFF' : color,
-      size: 3 + Math.random() * 2,
+      speed: 2.5 + Math.random() * 1.5,
+      color: i % 3 === 0 ? '#FFFFFF' : color,
+      size: 3,
     }));
   }, []);
 
@@ -73,7 +73,7 @@ const FireworksDisplay = () => {
       if (document.visibilityState === 'visible') {
         launchFirework();
       }
-    }, 3000);
+    }, 5000); // Slower interval for performance
     return () => clearInterval(interval);
   }, [launchFirework]);
 
@@ -86,7 +86,7 @@ const FireworksDisplay = () => {
           setFireworks((prev) =>
             prev.map((f) =>
               f.id === fw.id
-                ? { ...f, phase: 'explode', particles: createParticles(24, fw.color) }
+                ? { ...f, phase: 'explode', particles: createParticles(16, fw.color) }
                 : f
             )
           );

@@ -52,14 +52,11 @@ const Index = () => {
       <FloatingLanterns />
       <FireworksDisplay />
       
-      {/* Reduced aerial fireworks for performance */}
-      <AerialFirework startX={25} delay={1000} color="gold" />
-      <AerialFirework startX={75} delay={3000} color="cyan" />
+      {/* Single aerial firework for performance */}
+      <AerialFirework startX={50} delay={2000} color="gold" />
       
-      {/* Reduced heart fireworks for performance */}
-      <HeartFirework startX={20} delay={2500} color="#FF69B4" />
-      <HeartFirework startX={50} delay={4500} color="#FF1493" />
-      <HeartFirework startX={80} delay={6000} color="#FF6B6B" />
+      {/* Single heart firework for performance */}
+      <HeartFirework startX={50} delay={4000} color="#FF69B4" />
 
       {/* Content */}
       <div className="relative z-20">

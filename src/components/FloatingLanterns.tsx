@@ -4,16 +4,16 @@ import Lantern from './Lantern';
 const FloatingLanterns = () => {
   const lanterns = useMemo(() => {
     const items = [];
-    const count = 5; // Reduced from 8
+    const count = 3; // Reduced for performance
     
     for (let i = 0; i < count; i++) {
       items.push({
         id: i,
         startX: 50 + Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 800),
         startY: (typeof window !== 'undefined' ? window.innerHeight : 800) + 50 + Math.random() * 200,
-        size: 35 + Math.random() * 20,
-        duration: 10 + Math.random() * 6,
-        delay: i * 1.5,
+        size: 35 + Math.random() * 15,
+        duration: 14 + Math.random() * 6,
+        delay: i * 3,
       });
     }
     return items;

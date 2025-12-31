@@ -3,14 +3,14 @@ import { useMemo } from 'react';
 const SnowFall = () => {
   // Reduced to 40 snowflakes with shared keyframes for better performance
   const snowflakes = useMemo(() => {
-    return Array.from({ length: 40 }).map((_, i) => ({
+    return Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 8,
-      duration: 8 + Math.random() * 6,
-      size: 2 + Math.random() * 4,
-      opacity: 0.4 + Math.random() * 0.4,
-      driftClass: i % 3, // Use 3 shared animation classes instead of unique ones
+      delay: Math.random() * 10,
+      duration: 12 + Math.random() * 8,
+      size: 2 + Math.random() * 3,
+      opacity: 0.5,
+      driftClass: i % 3,
     }));
   }, []);
 
